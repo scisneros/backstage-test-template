@@ -13,6 +13,7 @@ spec:
           title: Catalog Info Path
           type: string
           description: "The path to the catalog info file."
+  steps:
     - id: register
       name: Register Project
       action: catalog:register
