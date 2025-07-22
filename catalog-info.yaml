@@ -1,0 +1,27 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: my-test-template
+  title: Test Template
+  description: This is a test template.
+spec:
+  type: Template
+  parameters:
+    - title: Test
+      properties:
+        catalogInfoPath:
+          title: Catalog Info Path
+          type: string
+          description: "The path to the catalog info file."
+  steps:
+    - id: register
+      name: Register Project
+      action: catalog:register
+      input:
+        repoContentsUrl: https://github.com/scisneros/backstage-test-template
+        catalogInfoPath: "/${{ parameters.catalogInfoPath }}"
+  output:
+    links:
+      - title: Open in catalog
+        icon: catalog
+        entityRef: ${{ steps["register"].output.entityRef }}
