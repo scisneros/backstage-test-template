@@ -1,0 +1,7 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: my-test-component
+  description: This is a test component.
+spec:
+  type: service
