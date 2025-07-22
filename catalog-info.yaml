@@ -14,6 +14,12 @@ spec:
           type: string
           description: "The path to the catalog info file."
   steps:
+    - id: dummy-http
+      name: Dummy HTTP Step
+      action: http:backstage:request
+      input:
+        method: "GET"
+        path: "https://api.sampleapis.com/coffee/hot"
     - id: register
       name: Register Project
       action: catalog:register
@@ -25,3 +31,6 @@ spec:
       - title: Open in catalog
         icon: catalog
         entityRef: ${{ steps["register"].output.entityRef }}
+    text:
+      - title: "Project registered successfully"
+        text: "Retrieved info: ${{ steps.dummy-http.output.response }}"
