@@ -5,3 +5,4 @@ metadata:
   description: This is a test component.
 spec:
   type: service
+  lifecycle: production
